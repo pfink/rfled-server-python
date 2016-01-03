@@ -4,11 +4,11 @@ import socket
 import serial
 
 # Set LED Control server settings
-UDP_IP = '192.168.0.13' # Leave empty for Broadcast support
+UDP_IP = '192.168.0.52' # Leave empty for Broadcast support
 LED_PORT = 8899
 
 # Serial Settings
-TTL_PORT = "/dev/ttyAMA0"
+TTL_PORT = "/dev/ttyUSB0"
 TTL_SPEED = 9600
 ser = serial.Serial(TTL_PORT, TTL_SPEED) # Connect to serial
 
