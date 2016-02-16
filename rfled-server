@@ -11,7 +11,7 @@
 ### END INIT INFO
 
 N=/etc/init.d/rfled-server
-RFLED_PATH=/usr/local/bin
+RFLED_PATH=${RFLED_PATH:-/usr/local/bin}
 
 set -e
 
