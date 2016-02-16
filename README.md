@@ -40,6 +40,4 @@ iface vlan.milight1 inet static
    post-down ip link delete dev vlan.milight1
 ```
  * Reboot the device
- * Adjust the variables within the scripts according your own configuration
-
-Limitations: At the moment, multiple interfaces are only implemented for admin.py. So, currently, you have to copy the led.py for each additional milight bridge and add an entry to the init script. An example with two interfaces / milight bridges is included into the current master branch. I only tested the admin.py against the official milight Android app.
+ * Adjust the variables within the scripts according to your own configuration
