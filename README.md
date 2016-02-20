@@ -53,7 +53,7 @@ Support for multiple milight bridges
    [MACVLAN]
    Mode=bridge
    ```
-   * Create /etc/systemd/network/eth0.milight1.netdev
+   * Create /etc/systemd/network/eth0.milight1.network
    ```
    [Match]
    Name=eth0.milight1
