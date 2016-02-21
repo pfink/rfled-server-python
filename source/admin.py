@@ -1,44 +1,22 @@
-#!/usr/bin/env python3
-
 import time
-import socket, sys
-import logging
-import logging.handlers
+import socket
 from struct import *
+from util import escalate_thread_exceptions
 
-# logging
-
-syslog = logging.getLogger('MyLogger')
-syslog.setLevel(logging.DEBUG)
-
-handler = logging.handlers.SysLogHandler(address = '/dev/log')
-
-syslog.addHandler(handler)
-
-try:
-    # Set admin server settings
-    UDP_IP = '' # Leave empty for Broadcast support
-    BROADCAST_IP = '192.168.0.255'
-    ADMIN_PORT = 48899
-
-    INT_IFACES = [  
-                    {"ip": '192.168.0.13', "mac": 'b827eb515d78'},
-                    {"ip": '192.168.0.52', "mac": '001122334455'}
-                 ]               
+@escalate_thread_exceptions
+def run_autodiscover_server(cfg):
 
     # Create UDP socket, bind to it
     socket_protocol = socket.IPPROTO_UDP
     adminsock = socket.socket(socket.AF_INET, socket.SOCK_RAW, socket_protocol)
-    adminsock.bind((UDP_IP, ADMIN_PORT))
+    adminsock.bind((cfg['autodiscover_ip'], cfg['autodiscover_port']))
     adminsock.setsockopt(socket.IPPROTO_IP, socket.IP_HDRINCL, 1)
 
     responsesocks = {}
-    for (i, iface) in enumerate(INT_IFACES):
+    for (i, iface) in enumerate(cfg['interfaces']):
         responsesock = socket.socket(socket.AF_INET,socket.SOCK_DGRAM)
-        responsesock.bind((iface["ip"], ADMIN_PORT))
+        responsesock.bind((iface["ip"], cfg['autodiscover_port']))
         responsesocks[iface["ip"]] = responsesock
-
-    syslog.info("rfled-server admin.py started")
 
     # Loop forever
     while True:
@@ -56,11 +34,11 @@ try:
         # print(admindata)
 
         if admindata is not None:
-            response_target_addr = (s_addr, ADMIN_PORT)         
+            response_target_addr = (s_addr, cfg['autodiscover_port'])
             response_data = bytes('+ok', "utf-8") # On all common requests, send OK
             
-            if d_addr == BROADCAST_IP:                                                      # On broadcast, send one response_data per virtual interface
-                for iface in INT_IFACES:                    
+            if d_addr == cfg['broadcast_ip']:                                                  # On broadcast, send one response_data per virtual interface
+                for iface in cfg['interfaces']:
                     if str(admindata).find("Link_Wi-Fi") != -1:                             # Specific case: If "Link_Wi-Fi" is requested
                         response = iface["ip"] + ',' + iface["mac"] + ',' 
                         response_data = bytes(response, "utf-8")                            # return our IP/MAC instead of OK.
@@ -71,6 +49,3 @@ try:
                 responsesocks[d_addr].sendto(response_data, response_target_addr)           # send OK with requested interface
         else:
             break
-except:
-    syslog.critical("rfled-server admin.py:" + str(sys.exc_info()[1]))
-    raise

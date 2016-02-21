@@ -8,21 +8,14 @@ This fork aims to provide functionality for multiple milight bridges on a single
 Install
 =======
 
- * Change the variables in both scripts to meet your needs
- * Start the scripts and they will start the UDP listeners
+ 1. Install `python3` and `python3-yaml` on your machine. On new linux distributions, `python3-serial` is also needed.
+ 2. Take the config.example.yaml and configure it according to your needs. Rename it to config.yml.
+ 3. Put config.yaml to the source folder or elsewhere (in case of the latter, set the environment variable RFLED_CONFIG_PATH to the path of config.yaml)
 
-Startup Script
-==============
-
- * Place script into /etc/init.d/
- * a) Ensure scripts are in /usr/local/bin/ or
- * b) Adjust path in rfled-server script to path of the scripts
- * Run update-rc.d rfled-server defaults to set up
- 
 Running
 =======
 
- * Run "/etc/init.d/rfled-server start" to start scripts without a restart
+Start main.py, e.g. with `python3 main.py`.
 
 
 Support for multiple milight bridges

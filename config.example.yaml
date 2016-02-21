@@ -1,0 +1,25 @@
+# General settings
+
+autodiscover: true                # Choose if you want to run the autodiscover process
+
+# Network and serial interface mapping
+
+interfaces:
+  - ip: 192.168.0.2
+    mac: b817eb615b38
+    serial: /dev/ttyAMA0
+  - ip: 192.168.0.3
+    mac: 001122334455
+    serial: /dev/ttyUSB0
+  ## add more interfaces here if needed ##
+
+# Network settings
+
+broadcast_ip: 192.168.0.255       # Broadcast IP of your LAN
+led_port: 8899                    # Port on which the milight bridge threads will listen
+autodiscover_ip: ''               # IP on which the autodiscover thread will listen. Leave empty for broadcast support
+autodiscover_port: 48899          # Port on which the autodiscover server will listen
+
+# Serial settings
+
+ttl_speed: 9600
