@@ -6,7 +6,7 @@ from led import *
 import yaml
 import os
 
-RFLED_CONFIG_PATH = os.getenv('RFLED_CONFIG_PATH', 'config.yaml')
+RFLED_CONFIG_PATH = os.getenv('RFLED_CONFIG_PATH', 'config.yml')
 
 with open(RFLED_CONFIG_PATH, 'r') as ymlfile:
     cfg = yaml.safe_load(ymlfile)
