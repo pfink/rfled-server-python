@@ -1,6 +1,6 @@
 import socket
 import serial
-from util import *
+from util import escalate_thread_exceptions
 
 
 @escalate_thread_exceptions

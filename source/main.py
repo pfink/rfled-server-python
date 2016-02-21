@@ -2,7 +2,7 @@
 
 from concurrent import futures
 from admin import run_autodiscover_server
-from led import *
+from led import run_milight_bridge
 import yaml
 import os
 

@@ -1,6 +1,6 @@
 import time
 import socket
-from struct import *
+from struct import unpack
 from util import escalate_thread_exceptions
 
 @escalate_thread_exceptions
