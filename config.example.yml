@@ -6,10 +6,10 @@ autodiscover: true                # Choose if you want to run the autodiscover p
 
 interfaces:
   - ip: 192.168.0.2
-    mac: b817eb615b38
+    mac: b8:17:eb:61:5b:38
     serial: /dev/ttyAMA0
   - ip: 192.168.0.3
-    mac: 001122334455
+    mac: 00:11:22:33:44:55
     serial: /dev/ttyUSB0
   ## add more interfaces here if needed ##
 
