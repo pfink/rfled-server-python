@@ -28,12 +28,14 @@ def run_autodiscover_server(cfg):
         d_addr = socket.inet_ntoa(iph[9]);
 
         admindata = raw_buffer[21:]
+        port = unpack("H", admindata[0:2])[0]
 
-        # Debug
+        # Debugging
         # print(', Source:'+ str(s_addr) + ', Destination:' + str(d_addr))
-        # print(admindata)
+        # print("Full UDP data: {}".format(admindata))
+        # print("port: {}".format(port))
 
-        if admindata is not None:
+        if admindata is not None and port == cfg['autodiscover_port']:
             response_target_addr = (s_addr, cfg['autodiscover_port'])
             response_data = bytes('+ok', "utf-8") # On all common requests, send OK
             
@@ -47,5 +49,3 @@ def run_autodiscover_server(cfg):
                     time.sleep(0.05)                                                        # Make a pause to improve reliability
             elif d_addr in responsesocks:                                                   # On direct request
                 responsesocks[d_addr].sendto(response_data, response_target_addr)           # send OK with requested interface
-        else:
-            break
