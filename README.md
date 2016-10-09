@@ -1,7 +1,7 @@
 rfled-server-python
 ============
 
-Small python app to run UDP servers emulating LimitlessLED / Milight / Applamp WiFi Bridge 4.0 units. Originally forked from [riptidewave93/RFLED-Server](https://github.com/riptidewave93/RFLED-Server) to add support for multiple milight bridges. As the original project has been ported to GO and this fork was in the end a nearly complete reimplementation anyway, both projects drifted strongly apart. As a consequence, this fork has been detached and is now offered as a separate project.
+Small python app to run UDP servers emulating LimitlessLED / Milight / Applamp WiFi Bridge 4.0 units. Originally forked from [riptidewave93/RFLED-Server](https://github.com/riptidewave93/RFLED-Server) to add support for multiple milight bridges. As the original project has been ported to Go and this fork was in the end a nearly complete reimplementation anyway, both projects drifted strongly apart. As a consequence, this fork has been detached and is now offered as a separate project.
 
 Hardware setup
 =======
@@ -69,3 +69,11 @@ Support for multiple milight bridges
    ```
  3. Reboot the device
  4. Adjust the variables within the scripts according to your own configuration
+ 
+ 
+Similar projects
+==============
+
+You may also interested in:
+
+* Go implementation of the same (without support for multiple bridges): [riptidewave93/RFLED-Server](https://github.com/riptidewave93/RFLED-Server)
