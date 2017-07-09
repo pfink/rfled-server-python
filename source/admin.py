@@ -28,7 +28,6 @@ def run_autodiscover_server(cfg):
         iph = unpack('!BBHHHBBH4s4s' , ip_raw_header)
 
         version_ihl = iph[0]
-        version = version_ihl >> 4
         ihl = version_ihl & 0xF
         iph_length = ihl * 4
 
