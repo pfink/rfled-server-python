@@ -53,7 +53,7 @@ def run_autodiscover_server(cfg):
             response_target_addr = (s_addr, s_port)
             response_data = bytes('+ok', "utf-8")                                           # Always answer with OK when nothing special is requested
             
-            if d_addr == cfg['broadcast_ip']:                                               # On broadcast, send one response_data per virtual interface
+            if d_addr == cfg['broadcast_ip'] or d_addr == "255.255.255.255":                # On broadcast, send one response_data per virtual interface
                 for iface in cfg['interfaces']:
                     if str(admindata).find("Link_Wi-Fi") != -1:                             # Specific case: If "Link_Wi-Fi" is requested
                         response = iface["ip"] + ',' + iface["mac"].replace(":", "").upper() + ','    
