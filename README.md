@@ -1,4 +1,4 @@
-RFLED Server Python [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
+RFLED Server Python [![Project Status: Unsupported – The project has reached a stable, usable state but the author(s) have ceased all work on it. A new maintainer may be desired.](https://www.repostatus.org/badges/latest/unsupported.svg)](https://www.repostatus.org/#unsupported)
 [![Build Status](https://travis-ci.org/pfink/rfled-server-python.svg?branch=master)](https://travis-ci.org/pfink/rfled-server-python)
 ============
 
